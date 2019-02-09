@@ -14,7 +14,7 @@ class Woop(pygame.sprite.Sprite):
         self.frame = 0
         self.images = []
         for i in range(1,2):
-            img = pygame.image.load(os.path.join('Sprites','woop_walk' + str(i) + '.png')).convert()
+            img = pygame.image.load(os.path.join('Sprites','woop' + str(i) + '.png')).convert()
             img.convert_alpha()     # optimise alpha
             img.set_colorkey((60, 255, 0)) # set alpha
             self.images.append(img)
