@@ -11,6 +11,7 @@ Setup
 BLUE  = (25,25,200)
 BLACK = (23,23,23 )
 WHITE = (254,254,254)
+ALPHA = (60, 255, 0)
 worldx = 960
 worldy = 720
 fps   = 40  # frame rate
