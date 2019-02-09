@@ -15,7 +15,6 @@ worldx = 500
 worldy = 500
 
 fps = 40        # frame rate
-ani = 4        # animation cycles
 clock = pygame.time.Clock()
 pygame.init()
 main = True
@@ -28,11 +27,11 @@ ALPHA = (0,255,0)
 world = pygame.display.set_mode([worldx,worldy])
 player = Woop()   # spawn player
 player.rect.x = 0
-player.rect.y = 250
+player.rect.y = 425
 player_list = pygame.sprite.Group()
 player_list.add(player)
-steps = 10      # how fast to move
-ani = 4
+steps = 6      # how fast to move
+
 '''
 Main loop
 '''
