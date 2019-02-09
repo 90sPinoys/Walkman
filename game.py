@@ -18,6 +18,8 @@ ani   = 4   # animation cycles
 clock = pygame.time.Clock()
 pygame.init()
 world    = pygame.display.set_mode([worldx,worldy])
+#backdrop = pygame.image.load(os.path.join('Backgrounds','stage.png').convert())
+#backdropbox = world.get_rect()
 player = Woop()   # spawn player
 player.rect.x = 0   # go to x
 player.rect.y = 0   # go to y
@@ -33,7 +35,7 @@ Main Loop
 '''
 while main == True:
     world.fill(BLUE)
-    player_list.draw(screen) # draw player
+    player_list.draw(world) # draw player
     pygame.display.flip()
     clock.tick(fps)
     for event in pygame.event.get():
