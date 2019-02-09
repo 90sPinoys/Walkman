@@ -36,11 +36,3 @@ class Woop(pygame.sprite.Sprite):
 
         self.rect.x = self.rect.x + self.movex
         self.rect.y = self.rect.y + self.movey
-
-        # moving left
-        if self.movex < 0:
-            self.frame += 1
-
-        # moving right
-        if self.movex > 0:
-            self.frame += 1

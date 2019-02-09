@@ -11,8 +11,8 @@ Objects
 '''
 Setup
 '''
-worldx = 960
-worldy = 720
+worldx = 500
+worldy = 500
 
 fps = 40        # frame rate
 ani = 4        # animation cycles
@@ -28,10 +28,10 @@ ALPHA = (0,255,0)
 world = pygame.display.set_mode([worldx,worldy])
 player = Woop()   # spawn player
 player.rect.x = 0
-player.rect.y = 0
+player.rect.y = 250
 player_list = pygame.sprite.Group()
 player_list.add(player)
-steps = 100      # how fast to move
+steps = 10      # how fast to move
 ani = 4
 '''
 Main loop
@@ -48,13 +48,19 @@ while main == True:
             if event.key == pygame.K_RIGHT or event.key == ord('d'):
                 player.control(steps,0)
             if event.key == pygame.K_UP or event.key == ord('w'):
-                print('jump')
+                player.control(0, -steps)
+            if event.key == pygame.K_DOWN or event.key == ord('s'):
+                player.control(0, steps)
 
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT or event.key == ord('a'):
                 player.control(steps,0)
             if event.key == pygame.K_RIGHT or event.key == ord('d'):
                 player.control(-steps,0)
+            if event.key == pygame.K_UP or event.key == ord('w'):
+                player.control(0, steps)
+            if event.key == pygame.K_DOWN or event.key == ord('s'):
+                player.control(0, -steps)
             if event.key == ord('q'):
                 pygame.quit()
                 sys.exit()
