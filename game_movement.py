@@ -12,7 +12,12 @@ Objects
 Setup
 '''
 worldx = 768
-worldy = 384
+worldy = 500
+
+pygame.mixer.init()
+pygame.mixer.music.load("home.mp3")
+pygame.mixer.music.play(-1,0.0)
+
 
 fps = 40        # frame rate
 clock = pygame.time.Clock()
@@ -25,12 +30,16 @@ WHITE = (254,254,254)
 ALPHA = (0,255,0)
 
 world = pygame.display.set_mode([worldx,worldy])
+backdrop = pygame.image.load(os.path.join('Backgrounds', 'mp.png'))
+backdropbox = world.get_rect()
 player = Woop()   # spawn player
 player.rect.x = 0
-player.rect.y = 325
+player.rect.y = 0
 player_list = pygame.sprite.Group()
 player_list.add(player)
 steps = 6      # how fast to move
+
+
 
 '''
 Main loop
@@ -65,8 +74,8 @@ while main == True:
                 sys.exit()
                 main = False
 
-    world.fill(BLACK)
-#    world.blit(backdrop, backdropbox)
+#    world.fill(BLACK)
+    world.blit(backdrop, (0,220))
     player.update()
     player_list.draw(world) #refresh player position
     pygame.display.flip()
