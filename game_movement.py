@@ -11,8 +11,8 @@ Objects
 '''
 Setup
 '''
-worldx = 500
-worldy = 500
+worldx = 768
+worldy = 384
 
 fps = 40        # frame rate
 clock = pygame.time.Clock()
@@ -27,7 +27,7 @@ ALPHA = (0,255,0)
 world = pygame.display.set_mode([worldx,worldy])
 player = Woop()   # spawn player
 player.rect.x = 0
-player.rect.y = 425
+player.rect.y = 325
 player_list = pygame.sprite.Group()
 player_list.add(player)
 steps = 6      # how fast to move
