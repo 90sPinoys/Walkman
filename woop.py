@@ -1,6 +1,7 @@
 import pygame
 import sys
 import os # new code below
+from collision import Collision
 
 class Woop(pygame.sprite.Sprite):
     '''
@@ -12,6 +13,7 @@ class Woop(pygame.sprite.Sprite):
         self.movex = 0
         self.movey = 0
         self.frame = 0
+        self.hitBox = Collision(0, 300, 175, 200)
         self.images = []
         self.leftDirection = False
         for i in range(0,8):
@@ -34,8 +36,9 @@ class Woop(pygame.sprite.Sprite):
         '''
         Update sprite position
         '''
-        self.rect.x = self.rect.x + self.movex
-        self.rect.y = self.rect.y + self.movey
+        if ( not self.hitBox.checkIntersect( self.rect.x + self.movex, self.rect.y + self.movey)):
+            self.rect.x = self.rect.x + self.movex
+            self.rect.y = self.rect.y + self.movey
 
         # moving left
         if self.movex < 0:
