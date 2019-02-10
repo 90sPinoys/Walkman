@@ -67,7 +67,7 @@ class Woop(pygame.sprite.Sprite):
                 self.image = self.images[(self.frame % 2) + 4]
 
             # moving up/right
-            if self.image == False:
+            if self.leftDirection == False:
                 self.image = self.images[(self.frame % 2) + 6]
 
         # moving down
@@ -81,7 +81,7 @@ class Woop(pygame.sprite.Sprite):
                 self.image = self.images[(self.frame % 2) + 4]
 
             # moving up/right
-            if self.image == False:
+            if self.leftDirection == False:
                 self.image = self.images[(self.frame % 2) + 6]             
                 
     
