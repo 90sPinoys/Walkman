@@ -5,6 +5,7 @@ import sys
 import os
 from woop import Woop
 
+
 '''
 Objects
 '''
@@ -31,6 +32,9 @@ player.rect.y = 425
 player_list = pygame.sprite.Group()
 player_list.add(player)
 steps = 6      # how fast to move
+stepsY = 0
+gravity = 1
+jump = -7
 
 '''
 Main loop
@@ -41,15 +45,23 @@ while main == True:
             pygame.quit(); sys.exit()
             main = False
 
+
+                        
+
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT or event.key == ord('a'):
                 player.control(-steps,0)
             if event.key == pygame.K_RIGHT or event.key == ord('d'):
                 player.control(steps,0)
-            if event.key == pygame.K_UP or event.key == ord('w'):
-                player.control(0, -steps)
+
+            
+            if (event.key == pygame.K_UP or event.key == ord('w')): #set variable so you can't hold jump
+                player.control(0,-steps)
+                
+                
             if event.key == pygame.K_DOWN or event.key == ord('s'):
                 player.control(0, steps)
+  
 
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT or event.key == ord('a'):
