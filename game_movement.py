@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-
+from cd import cd
 import pygame
 import sys
 import os
+import random
 from woop import Woop
 
 '''
@@ -14,6 +15,7 @@ Setup
 worldx = 768
 worldy = 500
 
+pygame.init()
 pygame.mixer.init()
 pygame.mixer.music.load("home.mp3")
 pygame.mixer.music.play(-1,0.0)
@@ -21,7 +23,6 @@ pygame.mixer.music.play(-1,0.0)
 
 fps = 40        # frame rate
 clock = pygame.time.Clock()
-pygame.init()
 main = True
 
 BLUE  = (25,25,200)
@@ -32,6 +33,18 @@ ALPHA = (0,255,0)
 world = pygame.display.set_mode([worldx,worldy])
 backdrop = pygame.image.load(os.path.join('Backgrounds', 'mp.png'))
 backdropbox = world.get_rect()
+random.seed()
+cd_x = []
+cd_y = []
+for i in range(0, 29):
+    cd_x.append(random.randint(0, 200))
+    cd_y.append(random.randint(4, 200))
+
+cd = cd()   # spawn player
+cd.rect.x = cd_x[0]
+cd.rect.y = cd_y[0]
+cd_list = pygame.sprite.Group()
+cd_list.add(cd)
 player = Woop()   # spawn player
 player.rect.x = 0
 player.rect.y = 0
@@ -76,6 +89,7 @@ while main == True:
 
 #    world.fill(BLACK)
     world.blit(backdrop, (0,220))
+    cd_list.draw(world)
     player.update()
     player_list.draw(world) #refresh player position
     pygame.display.flip()
